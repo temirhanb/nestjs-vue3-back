@@ -1,6 +1,12 @@
 import {Controller, Get} from "@nestjs/common";
 import {AppService} from "./app.service";
 import {DbService} from "./db/db.service";
+import {ApiOkResponse, ApiProperty} from "@nestjs/swagger";
+
+class HelloWorldDto {
+  @ApiProperty()
+  message: string;
+}
 
 @Controller()
 export class AppController {
@@ -8,9 +14,12 @@ export class AppController {
   }
 
   @Get()
-  async getHello(): Promise<string> {
+  @ApiOkResponse({
+    type: HelloWorldDto,
+  })
+  async getHello(): Promise<HelloWorldDto> {
     const user = this.dbService.user.findMany({});
 
-    return this.appService.getHello();
+    return {message: this.appService.getHello()};
   }
 }
