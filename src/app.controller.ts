@@ -1,12 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import {Controller, Get} from "@nestjs/common";
+import {AppService} from "./app.service";
+import {DbService} from "./db/db.service";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private dbService: DbService) {
+  }
 
   @Get()
-  getHello(): string {
+  async getHello(): Promise<string> {
+    const user = this.dbService.user.findMany({});
+
     return this.appService.getHello();
   }
 }
