@@ -6,7 +6,7 @@ import {BlockListService} from "../block-list/block-list.service";
 @Injectable()
 export class UsersService {
 
-  constructor(private db: DbService, private accountService: AccountService, private blockListService:BlockListService) {
+  constructor(private db: DbService, private accountService: AccountService, private blockListService: BlockListService) {
   }
 
   findByEmail(email: string) {

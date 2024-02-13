@@ -1,5 +1,5 @@
 import {Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query, UseGuards} from "@nestjs/common";
-import {ApiCreatedResponse, ApiOkResponse, ApiParam} from "@nestjs/swagger";
+import {ApiCreatedResponse, ApiOkResponse} from "@nestjs/swagger";
 import {AddBlockItemDto, BlockItemDto, BlockListDto, BlockListQueryDto} from "./dto";
 import {AuthGuard} from "../auth/auth.guard";
 import {SessionInfoDecorator} from "../auth/session-info.decorator";
